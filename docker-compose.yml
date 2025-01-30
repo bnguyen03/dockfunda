@@ -1,0 +1,22 @@
+version: '3.8'
+services:
+  ech-redis:
+    image: redis:latest
+    container_name: ech-redis
+    volumes:
+      - ./redisdata:/data
+    networks:
+      - echnet
+
+  # ech-app:
+  #   build: .    # Force a build of the Dockerfile in the current directory
+  #   ports:
+  #     - "5000:5000"
+  #   environment:
+  #     - netname=ech-redis      # Set the environment variable as specified
+  #   depends_on:
+  #     - ech-redis
+
+networks:
+  echnet:
+    driver: bridge
